@@ -17,26 +17,28 @@ int main()
     string riga;
     int n=1;
     while(getline(fileInput, riga))
-    {       
-        cout << n <<"-"<< riga << endl;
-        n+=1;
+    {   
+        
+        if(riga == "")
+        {
+            fileOutput<< riga << endl;
+        }
+        else if(n<10)
+        {
+            fileOutput << n <<"   - "<< riga << endl;  
+            n++; 
+        }
+        else if(n<100)
+        {
+            fileOutput << n <<"  - "<< riga << endl;
+            n++;
+        }
+        else
+        {
+        fileOutput << n <<" - "<< riga << endl;
+        n++;
+        }
             
-    
     }
     fileInput.close();
 }
-   //for (int i=0; i<150; i+6)  
-    //fileOutput <<n<<"-"<< riga <<endl;
-
-    
-    
-    
-    
-    
-    /*while(getline(in, riga))
-    {
-        cout<<riga<<endl;
-    }*/
-
-
-
