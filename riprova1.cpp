@@ -1,61 +1,69 @@
-#include<iostream>
-#include<string>
-#include<fstream>
+#include <iostream>
+#include <string>
+#include <fstream>
 
 using namespace std;
-int main(){
+int main()
+{
+    ifstream filecreato("maggio.txt");
+    string parola = "";
+    string riga;
+    string accumulatore;
+    int numeroRiga = 0;
 
-ifstream filecreato("maggio.txt");
-ofstream fileoutput("output.txt");
-
-    if (filecreato.is_open())
+    cout << "inserisci parola, per terminare inserisci EXIT" << endl;
+    cin >> parola;
+    if (parola == "EXIT")
     {
-        cout<<"il file e aperto"<<endl;
+        cout << "il gioco e finito." << endl;
     }
     else
     {
-        cout<<"il file non e aperto bene"<<endl;
-    }
-    string parola = "";
-    string riga;
-    int numeroRigaParolaTrovata = 0;
-    
-            cout<<"inserisci parola, per terminare inserisci EXIT"<<endl;
-            cin>> parola;
-
-    while (getline(filecreato, riga)) // per scorrere tutte righe del testo
-    {
-        numeroRigaParolaTrovata++;
-        bool flag = false;                      // se trovo parolo imposto true
-        for (int i = 0; i < riga.length(); i++) // per analizzare tutta riga
-
+        while (getline(filecreato, riga)) // per scorrere tutte righe del testo
         {
-
-            // cout << "i:" << i << endl;
-            for (int j = 0; j < parola.length(); j++) // incremento indice j di parola
+            numeroRiga++;
+            if (riga != "")
             {
-                if (riga[i] == parola[j])
+                accumulatore = accumulatore + to_string(numeroRiga) + riga + "\n";
+            }
+            else
+            {
+                accumulatore = "";
+            }
+
+            // bool flag = false;                      // se trovo parola imposto true
+            for (int i = 0; i < riga.length(); i++) // per analizzare tutta riga
+            {
+                for (int j = 0; j < parola.length(); j++) // incremento indice j di parola
                 {
-                    if (j == parola.length() - 1)
+                    if (riga[i] == parola[j])
                     {
-                        flag = true;
-                        cout << "trovata" << endl;
+                        if (j == parola.length() - 1)
+                        {
+                            cout << "La parola: " << parola << " e' nella riga: " << numeroRiga << "-- " << riga << endl;
+                            cout << "Fa parte del paragrafo: " << endl << accumulatore << endl;
+                            while (getline(filecreato, riga))
+                            {
+                                if (riga == "")
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    cout << riga << endl;
+                                }
+                            }
+                        }
+                        i++;
+
                     }
-                    i++;
-                }
-                else
-                {
-                    break;
+                    else
+                    {
+                        break;
+                    }
                 }
             }
         }
-        if (flag == true)
-        {
-            cout << "la parola e nella riga:" << numeroRigaParolaTrovata << endl;
-            cout << "la parola compare nella riga:" << riga <<endl;
-        }
+        filecreato.close();
     }
-
-    filecreato.close();
-    fileoutput.close();
 }
