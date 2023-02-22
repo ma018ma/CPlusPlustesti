@@ -10,6 +10,7 @@ int main()
     string riga;
     string accumulatore;
     int numeroRiga = 0;
+    int numeretto = 0;
 
     cout << "inserisci parola, per terminare inserisci EXIT" << endl;
     cin >> parola;
@@ -18,16 +19,20 @@ int main()
         cout << "il gioco e finito." << endl;
     }
     else
-    {
+    {    
+
         while (getline(filecreato, riga)) // per scorrere tutte righe del testo
         {
+            numeretto++;
             numeroRiga++;
             if (riga != "")
             {
-                accumulatore = accumulatore + to_string(numeroRiga) + riga + "\n";
+            
+                accumulatore = accumulatore + to_string(numeroRiga)+ " - " + riga + "\n";
             }
             else
             {
+            
                 accumulatore = "";
             }
 
@@ -40,22 +45,22 @@ int main()
                     {
                         if (j == parola.length() - 1)
                         {
-                            cout << "La parola: " << parola << " e' nella riga: " << numeroRiga << "-- " << riga << endl;
-                            cout << "Fa parte del paragrafo: " << endl << accumulatore << endl;
+                            cout << "La parola: " << parola << " e' nella riga: " << numeroRiga << endl;
+                            cout << "Fa parte del paragrafo: " << endl << accumulatore;
                             while (getline(filecreato, riga))
-                            {
+                            {numeretto++; 
                                 if (riga == "")
-                                {
+                                {                                
                                     break;
                                 }
                                 else
                                 {
-                                    cout << riga << endl;
+                                    cout << numeretto << " - " << riga<< endl;
                                 }
                             }
                         }
                         i++;
-
+            
                     }
                     else
                     {
