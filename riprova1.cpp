@@ -1,12 +1,14 @@
 #include<iostream>
 #include<string>
 #include<fstream>
+
 using namespace std;
-int main()
-{
-    ifstream fileInput ("maggio.txt");
-    //ofstream fileOutput ("output.txt");
-    if (fileInput.is_open())
+int main(){
+
+ifstream filecreato("maggio.txt");
+ofstream fileoutput("output.txt");
+
+    if (filecreato.is_open())
     {
         cout<<"il file e aperto"<<endl;
     }
@@ -14,41 +16,21 @@ int main()
     {
         cout<<"il file non e aperto bene"<<endl;
     }
+    string parola = "";
     string riga;
-    /*int n=1;
-    while(getline(fileInput, riga))
-    {   
-        
-        if(riga == "")
-        {
-            fileOutput<< riga << endl;
-        }
-        else if(n<10)
-        {
-            fileOutput << n <<"   - "<< riga << endl;  
-            n++; 
-        }
-        else if(n<100)
-        {
-            fileOutput << n <<"  - "<< riga << endl;
-            n++;
-        }
-        else
-        {
-        fileOutput << n <<" - "<< riga << endl;
-        n++;
-        }*/
+    int numeroRigaParolaTrovata = 0;
+    
+            cout<<"inserisci parola, per terminare inserisci EXIT"<<endl;
+            cin>> parola;
 
-    string parola = "tanto";
-    int numeroRigaParolaTrovata = 1;
-
-    while (getline(fileInput, riga)) // per scorrere tutte righe del testo
+    while (getline(filecreato, riga)) // per scorrere tutte righe del testo
     {
         numeroRigaParolaTrovata++;
         bool flag = false;                      // se trovo parolo imposto true
         for (int i = 0; i < riga.length(); i++) // per analizzare tutta riga
 
         {
+
             // cout << "i:" << i << endl;
             for (int j = 0; j < parola.length(); j++) // incremento indice j di parola
             {
@@ -70,8 +52,10 @@ int main()
         if (flag == true)
         {
             cout << "la parola e nella riga:" << numeroRigaParolaTrovata << endl;
+            cout << "la parola compare nella riga:" << riga <<endl;
         }
-    }        
     }
-    fileInput.close();
+
+    filecreato.close();
+    fileoutput.close();
 }
