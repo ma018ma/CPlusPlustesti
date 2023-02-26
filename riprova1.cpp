@@ -43,8 +43,10 @@ int main()
                 {
                     if (riga[i] == parola[j])
                     {
-                        if (j == parola.length() - 1)
+                        if (j == parola.length() -1)
                         {
+                            bool flag = false;
+                            bool ( == parola.length() );
                             cout << "La parola: " << parola << " e' nella riga: " << numeroRiga << endl;
                             cout << "Fa parte del paragrafo: " << endl << accumulatore;
                             while (getline(filecreato, riga))
