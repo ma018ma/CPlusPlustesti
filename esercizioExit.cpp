@@ -16,8 +16,8 @@ int main()
     }
     string parola = "";
     string riga;    
-    cout<<"Inserisci una parola da cercare. Inserici EXIT per uscire."<<endl;
-    cin>> parola;
+   // cout<<"Inserisci una parola da cercare. Inserici EXIT per uscire."<<endl;
+    //cin>> parola;
     int n=1;
     while(getline(filedalavoro, riga))
     {   

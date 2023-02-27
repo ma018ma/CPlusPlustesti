@@ -14,9 +14,10 @@ int main()
     {
         cout << "il file non e aperto bene" << endl;
     }
-    string parola = "tanto";
+    string parola = "";
     string riga;
-    int numeroRigaParolaTrovata = 1;
+    int numeroRigaParolaTrovata = 0;
+    cin>> parola;
 
     while (getline(fileInput, riga)) // per scorrere tutte righe del testo
     {
@@ -25,7 +26,6 @@ int main()
         for (int i = 0; i < riga.length(); i++) // per analizzare tutta riga
 
         {
-            // cout << "i:" << i << endl;
             for (int j = 0; j < parola.length(); j++) // incremento indice j di parola
             {
                 if (riga[i] == parola[j])
